@@ -4,7 +4,6 @@
 .ngx-knob-container {
   width: 280px;
   height: 280px;
-  margin: 5vh auto;
   padding: 32px;
   position: relative;
 }
@@ -13,8 +12,7 @@
   width: 100%;
   height: 100%;
   border: 1px white solid;
-  box-shadow: 0 15px 30px 0 rgba(142, 155, 174, 0.2),
-    0 3px 8px 1px rgba(142, 155, 174, 0.2) inset;
+  box-shadow: 0 15px 30px 0 rgba(142, 155, 174, 0.2), 0 3px 8px 1px rgba(142, 155, 174, 0.2) inset;
   background: #dee2e7;
   border-radius: 100%;
   padding: 20px;
@@ -23,8 +21,7 @@
 }
 
 .elipse1 {
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25),
-    3px 3px 8px 0px rgba(255, 255, 255, 0.5) inset,
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25), 3px 3px 8px 0px rgba(255, 255, 255, 0.5) inset,
     0 8px 15px 0 rgba(142, 155, 174, 50);
   background: linear-gradient(170deg, #f5f5f9, #e4e8ee);
   border-radius: 100%;
@@ -32,6 +29,9 @@
   height: 100%;
   padding: 14px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .elipse2 {
@@ -46,11 +46,12 @@
   font-family: arial;
   position: relative;
   z-index: 6;
+  pointer-events: none;
 }
 
 span.num {
   color: rgb(60 60 67 / 18%);
-  font-size: 55px;
+  font-size: 36px;
 }
 
 .title {
@@ -65,7 +66,7 @@ span.num {
   left: 0px;
   z-index: 0;
   width: 100%;
-  transform: rotate(-144deg);
+  transform: rotate(-147deg);
 }
 
 #rangeArk {
@@ -110,4 +111,28 @@ span.num {
     right: -5px;
     bottom: 50%;
   }
+}
+
+.pointer-container {
+  position: absolute;
+  top: 0;
+  width: 16px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  .angle-pointer {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 20px;
+    border-radius: 100%;
+    background: linear-gradient(40deg, #dde1e7, #fafbfc);
+  }
+}
+
+svg.grade-mark {
+  fill: none;
+  stroke: #b7c1cb;
+  stroke-width: 12;
+  stroke-dasharray: 1 36.6;
 }

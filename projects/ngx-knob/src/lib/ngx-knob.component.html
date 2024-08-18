@@ -3,8 +3,8 @@
     <span class="start">20</span>
     <span class="middle">50</span>
     <span class="end">80</span>
-    <svg viewBox="0 0 120 120" width="240">
-      <path d="M 10,60 A 50,50 0 0 1 110,60" stroke="#B7C1CB" stroke-width="5" stroke-dasharray="1, 10" fill="none" />
+    <svg viewBox="0 0 280 280" width="280" class="grade-mark">
+      <path d="M 20 140 A 120 120 0 0 1 260 140" />
     </svg>
   </div>
 
@@ -12,7 +12,7 @@
     <svg viewBox="0 0 36 36" id="range-s">
       <path
         id="rangeArk"
-        [attr.strokeDasharray]="arcValue + ', 100'"
+        [attr.stroke-dasharray]="arcValue + ', 100'"
         stroke-linecap="round"
         d="M18 2.0845
               a 15.9155 15.9155 0 0 1 0 31.831
@@ -34,10 +34,16 @@
         </linearGradient>
       </defs>
     </svg>
-    <div class="elipse1">
+    <div
+      class="elipse1"
+      #selectAngle
+      (mousedown)="onMouseDown($event)"
+      (touchstart)="onMouseDown($event)"
+      (mousemove)="onMouseMove($event)"
+      (touchmove)="onMouseMove($event)">
       <div class="elipse2">
         <div class="title">{{ title }}</div>
-        <span class="num">{{ value }}</span>
+        <span class="num">{{ value | number : '0.0-1' }}</span>
         <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g filter="url(#filter0_i_313_26)">
             <path
@@ -69,6 +75,11 @@
           </defs>
         </svg>
       </div>
+
+      <div class="pointer-container" #pointer>
+        <div class="angle-pointer"></div>
+      </div>
     </div>
   </div>
 </div>
+arcValue={{ arcValue }}
