@@ -1,0 +1,74 @@
+<div class="ngx-knob-container">
+  <div class="degree-points">
+    <span class="start">20</span>
+    <span class="middle">50</span>
+    <span class="end">80</span>
+    <svg viewBox="0 0 120 120" width="240">
+      <path d="M 10,60 A 50,50 0 0 1 110,60" stroke="#B7C1CB" stroke-width="5" stroke-dasharray="1, 10" fill="none" />
+    </svg>
+  </div>
+
+  <div class="ngx-knob">
+    <svg viewBox="0 0 36 36" id="range-s">
+      <path
+        id="rangeArk"
+        [attr.strokeDasharray]="arcValue + ', 100'"
+        stroke-linecap="round"
+        d="M18 2.0845
+              a 15.9155 15.9155 0 0 1 0 31.831
+              a 15.9155 15.9155 0 0 1 0 -31.831"
+        fill="none"
+        stroke="url(#rangearcgradient)"
+        stroke-width="2" />
+      <defs>
+        <linearGradient
+          id="rangearcgradient"
+          x1="0%"
+          y1="0%"
+          [attr.x2]="arcValue + '%'"
+          y2="0%"
+          gradientUnits="userSpaceOnUse"
+          linearGradient>
+          <stop stop-color="#985EE1" />
+          <stop offset="1" stop-color="#F25656" />
+        </linearGradient>
+      </defs>
+    </svg>
+    <div class="elipse1">
+      <div class="elipse2">
+        <div class="title">{{ title }}</div>
+        <span class="num">{{ value }}</span>
+        <svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g filter="url(#filter0_i_313_26)">
+            <path
+              d="M0.194336 5.90527C0.194336 14.166 5.18945 19.6016 12.8057 19.6016C15.5664 19.6016 17.9297 18.6777 19.5732 17.0986C20.0459 18.2266 20.3252 19.4941 20.7656 20.9121C20.959 21.5352 21.4316 21.8574 21.9902 21.8574C22.9893 21.8574 23.7949 20.9336 23.7949 19.8594C23.7949 18.5918 22.6777 16.583 21.3242 14.6064C21.7861 13.5645 22.0332 12.4043 22.0332 11.1475C22.0332 6.38867 18.166 2.94043 12.8486 2.94043C11.0439 2.94043 9.27148 3.43457 7.35938 3.43457C5.75879 3.43457 4.48047 2.94043 3.40625 1.72656C2.51465 0.68457 0.90332 0.845703 0.538086 2.34961C0.258789 3.42383 0.194336 5.31445 0.194336 5.90527ZM6.54297 8.69824C7.15527 10.5674 9.21777 11.6309 11.957 12.2646C15.4912 13.0703 16.9629 13.7256 18.1768 15.0039C16.9844 16.3467 15.1045 17.1416 12.8057 17.1416C6.5752 17.1416 2.6543 12.8018 2.6543 5.90527C2.6543 5.50781 2.66504 5.0459 2.70801 4.70215C2.71875 4.4873 2.83691 4.46582 2.9873 4.5625C4.1582 5.40039 5.82324 5.89453 7.35938 5.89453C8.55176 5.89453 9.62598 5.74414 10.582 5.61523C11.4307 5.48633 12.1504 5.40039 12.8486 5.40039C16.8018 5.40039 19.5732 7.78516 19.5732 11.1475C19.5732 11.6309 19.5195 12.0928 19.4229 12.5225C17.8975 11.4268 15.7061 10.7393 12.6875 10.2881C10.2812 9.92285 8.6377 9.40723 7.5957 8.11816C7.10156 7.54883 6.2959 7.94629 6.54297 8.69824Z"
+              fill="#30DB5B" />
+          </g>
+          <defs>
+            <filter
+              id="filter0_i_313_26"
+              x="0.194336"
+              y="0.68457"
+              width="23.6006"
+              height="22.6729"
+              filterUnits="userSpaceOnUse"
+              color-interpolation-filters="sRGB">
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+              <feColorMatrix
+                in="SourceAlpha"
+                type="matrix"
+                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                result="hardAlpha" />
+              <feOffset dy="1.5" />
+              <feGaussianBlur stdDeviation="0.75" />
+              <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 0" />
+              <feBlend mode="overlay" in2="shape" result="effect1_innerShadow_313_26" />
+            </filter>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
