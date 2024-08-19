@@ -67,7 +67,7 @@ export class NgxKnobComponent implements ControlValueAccessor, OnInit, Validator
   writeValue(value: any): void {
     this.value = +value;
     let newVal = Math.round((this.value * 82) / 100);
-    let deg = convertValueToDegree(newVal, this._min, this._max) - 210;
+    let deg = convertValueToDegree(value, this.min, this.max) - 150 ;
     this.movePointer(deg);
     this.initRange();
   }

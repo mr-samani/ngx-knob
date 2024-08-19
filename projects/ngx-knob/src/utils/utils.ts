@@ -24,8 +24,7 @@ export function convertValueToDegree(value: number, min: number, max: number) {
   // محاسبه درصد مقدار در محدوده min و max
   const percentage = (value - min) / (max - min);
 
-  // تبدیل درصد به درجه (0 تا 360)
-  const degree = percentage * 360;
+  const degree = percentage * 300;
   return degree;
 }
 
