@@ -6,6 +6,7 @@ import {
   ControlValueAccessor,
   ValidationErrors,
   Validator,
+  FormControl,
 } from '@angular/forms';
 import { convertDegreeToValue, convertValueToDegree, getOffsetPosition } from '../utils/utils';
 
@@ -44,6 +45,8 @@ export class NgxKnobComponent implements ControlValueAccessor, OnInit, Validator
   selectAngle!: ElementRef<HTMLDivElement>;
   @ViewChild('pointer', { static: true })
   pointer!: ElementRef<HTMLDivElement>;
+
+  myControl = new FormControl();
   constructor(private _renderer: Renderer2) {
     this.initRange();
   }
@@ -64,23 +67,36 @@ export class NgxKnobComponent implements ControlValueAccessor, OnInit, Validator
     return this.selectAngle.nativeElement.getBoundingClientRect().width;
   }
 
-  writeValue(value: any): void {
-    this.value = +value;
-    let newVal = Math.round((this.value * 82) / 100);
-    let deg = convertValueToDegree(value, this.min, this.max) - 150 ;
-    this.movePointer(deg);
-    this.initRange();
+  writeValue(val: any): void {
+    this.myControl.setValue(val);
+    if (this.isInValid(val) == false && val !== null && val !== undefined) {
+      this.value = +val;
+      let deg = convertValueToDegree(val, this.min, this.max) - 150;
+      this.movePointer(deg);
+      this.initRange();
+    }
+    if (val === null || val === undefined || typeof val !== 'number') {
+      this.value = 0;
+      this.arcValue = 0;
+      this.movePointer(150 + 60);
+    }
+
+    this._validatorOnChange();
+  }
+
+  isInValid(value: any): boolean {
+    return value < this.min || value > this.max || typeof +value !== 'number';
   }
 
   validate(control: AbstractControl): ValidationErrors | null {
     let error: any = {};
-    if (this.value < this.min) error.min = true;
-    if (this.value > this.max) error.max = true;
-    if (typeof +this.value !== 'number') error.invalid = true;
+    if (control.value < this.min) error.min = true;
+    if (control.value > this.max) error.max = true;
+    if (typeof +control.value !== 'number') error.invalid = true;
     if (error.min || error.max || error.invalid) {
       return Object.assign(control.errors || {}, error);
     }
-    return control.errors;
+    return null;
   }
   registerOnValidatorChange?(fn: () => void): void {
     this._validatorOnChange = fn;
@@ -108,6 +124,9 @@ export class NgxKnobComponent implements ControlValueAccessor, OnInit, Validator
   initRange() {
     // calc from 100 => 100=82, x=?  ==> ;
     this.arcValue = Math.round((this.value * 82) / 100);
+    this.myControl.setValue(this.value);
+    this._onChange(this.value);
+    // this._validatorOnChange();
   }
 
   /*-------------------------------------------------------------------------------------------------*/
@@ -179,7 +198,6 @@ export class NgxKnobComponent implements ControlValueAccessor, OnInit, Validator
     this.movePointer(deg);
     this.value = convertDegreeToValue(deg, this.min, this.max);
     this.initRange();
-    this._onChange(this.value);
   }
 
   /**
@@ -190,5 +208,4 @@ export class NgxKnobComponent implements ControlValueAccessor, OnInit, Validator
     let transform = 'translateZ(0px) rotate(' + deg + 'deg)';
     this._renderer.setStyle(this.pointer.nativeElement, 'transform', transform);
   }
-  
 }

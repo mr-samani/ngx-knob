@@ -1,5 +1,8 @@
-:host * {
-  box-sizing: border-box;
+:host {
+  display: inline-block;
+  * {
+    box-sizing: border-box;
+  }
 }
 .ngx-knob-container {
   width: 280px;

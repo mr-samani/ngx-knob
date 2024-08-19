@@ -12,8 +12,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  value = 100;
+  value: number | null = 100;
   createRandomaize() {
     this.value = Math.round(Math.random() * 100);
+  }
+
+  clear() {
+    this.value = null;
   }
 }
