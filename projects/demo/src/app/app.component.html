@@ -1,6 +1,8 @@
 <div class="container">
   <ngx-knob [(ngModel)]="value" #knob="ngModel" required />
-  <button (click)="clear()">clear</button>
+  <div>
+    <button (click)="clear()">clear</button>
+  </div>
   <pre>{{ value | json }}</pre>
   <input type="number" [(ngModel)]="value" />
   <pre>{{ knob.errors | json }}</pre>
