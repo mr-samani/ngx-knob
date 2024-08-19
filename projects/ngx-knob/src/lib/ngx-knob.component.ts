@@ -68,8 +68,7 @@ export class NgxKnobComponent implements ControlValueAccessor, OnInit, Validator
     this.value = +value;
     let newVal = Math.round((this.value * 82) / 100);
     let deg = convertValueToDegree(newVal, this._min, this._max) - 210;
-    let transform = 'translateZ(0px) rotate(' + deg + 'deg)';
-    this._renderer.setStyle(this.pointer.nativeElement, 'transform', transform);
+    this.movePointer(deg);
     this.initRange();
   }
 
@@ -109,13 +108,6 @@ export class NgxKnobComponent implements ControlValueAccessor, OnInit, Validator
   initRange() {
     // calc from 100 => 100=82, x=?  ==> ;
     this.arcValue = Math.round((this.value * 82) / 100);
-
-    // // // let svg = document.getElementById('range-s')!;
-    // // // svg.setAttributeNS(
-    // // //   'http://www.w3.org/2000/svg',
-    // // //   'viewBox',
-    // // //   `0 0 ${this.width} ${this.height}`
-    // // // );
   }
 
   /*-------------------------------------------------------------------------------------------------*/
@@ -178,14 +170,25 @@ export class NgxKnobComponent implements ControlValueAccessor, OnInit, Validator
     // e : is west
     e = 90 + e;
     e < 0 && (e = 360 + e);
-    e = Math.round(e);
-    let transform = 'translateZ(0px) rotate(' + e + 'deg)';
     let deg = Math.round(e);
-
+    if (deg > 150 && deg <= 180) {
+      deg = 150;
+    } else if (deg > 180 && deg <= 210) {
+      deg = 210;
+    }
+    this.movePointer(deg);
     this.value = convertDegreeToValue(deg, this.min, this.max);
-    // this.pointer.nativeElement.style.transform = transform;
-    this._renderer.setStyle(this.pointer.nativeElement, 'transform', transform);
     this.initRange();
     this._onChange(this.value);
   }
+
+  /**
+   * move knob pointer
+   * @param deg number between 0 - 360
+   */
+  private movePointer(deg: number) {
+    let transform = 'translateZ(0px) rotate(' + deg + 'deg)';
+    this._renderer.setStyle(this.pointer.nativeElement, 'transform', transform);
+  }
+  
 }
