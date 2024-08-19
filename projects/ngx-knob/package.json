@@ -1,12 +1,56 @@
 {
   "name": "ngx-knob",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "An Angular component for creating knob controllers to adjust values within a specified range.",
+  "author": "Mohammadreza Samani <mr.samani1368@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mr-samani/ngx-knob.git"
+  },
+  "keywords": [
+    "angular",
+    "knob",
+    "range picker",
+    "select angle",
+    "component",
+    "slider",
+    "input",
+    "UI"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mr-samani/ngx-knob/issues"
+  },
+  "homepage": "https://github.com/mr-samani/ngx-knob#readme",
+  "main": "dist/ngx-knob/bundles/ngx-knob.umd.js",
+  "module": "dist/ngx-knob/fesm2015/ngx-knob.js",
+  "es2015": "dist/ngx-knob/fesm2015/ngx-knob.js",
+  "esm5": "dist/ngx-knob/esm5/ngx-knob.js",
+  "esm2015": "dist/ngx-knob/esm2015/ngx-knob.js",
+  "fesm5": "dist/ngx-knob/fesm5/ngx-knob.js",
+  "fesm2015": "dist/ngx-knob/fesm2015/ngx-knob.js",
+  "typings": "dist/ngx-knob/ngx-knob.d.ts",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "publish": "ng build ngx-knob --prod && npm publish --access public"
+  },
   "peerDependencies": {
-    "@angular/common": "^18.2.0",
-    "@angular/core": "^18.2.0"
+    "@angular/common": ">=8.2.14",
+    "@angular/core": ">=8.2.14"
   },
-  "dependencies": {
-    "tslib": "^2.3.0"
+  "devDependencies": {
+    "@angular/cli": ">=8.2.14",
+    "@angular/compiler-cli": ">=8.2.14",
+    "@angular/compiler": ">=8.2.14"
   },
-  "sideEffects": false
+  "ngPackage": {
+    "lib": {
+      "entryFile": "src/public-api.ts"
+    }
+  }
 }
