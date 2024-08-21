@@ -1,4 +1,24 @@
 .container {
   margin: 10vh auto;
-  text-align: center;
+  max-width: 400px;
+}
+ngx-knob {
+  margin: 0 auto;
+  display: table;
+}
+
+.color-ranges {
+  .item {
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px #69696959;
+    margin: 2px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    input[type='range'] {
+      flex: 100%;
+    }
+  }
 }

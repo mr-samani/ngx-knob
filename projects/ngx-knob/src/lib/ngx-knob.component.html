@@ -10,29 +10,23 @@
 
   <div class="ngx-knob">
     <svg viewBox="0 0 36 36" id="range-s">
-      <path
-        id="rangeArk"
-        [attr.stroke-dasharray]="arcValue + ', 100'"
-        stroke-linecap="round"
-        d="M18 2.0845
-              a 15.9155 15.9155 0 0 1 0 31.831
-              a 15.9155 15.9155 0 0 1 0 -31.831"
-        fill="none"
-        stroke="url(#rangearcgradient)"
-        stroke-width="2" />
-      <defs>
-        <linearGradient
-          id="rangearcgradient"
-          x1="0%"
-          y1="0%"
-          [attr.x2]="arcValue + '%'"
-          y2="0%"
-          gradientUnits="userSpaceOnUse"
-          linearGradient>
-          <stop stop-color="#985EE1" />
-          <stop offset="1" stop-color="#F25656" />
-        </linearGradient>
-      </defs>
+      <foreignObject class="logoBack" x="0" y="0" width="36" height="36">
+        <div class="arcGradient" xmlns="http://www.w3.org/1999/xhtml" [ngStyle]="{background:_colorRanges}"></div>
+      </foreignObject>
+      <g class="blendMode">
+        <rect x="0" y="0" width="36" height="36" />
+        <!-- <path d="M 50 96 a 46 46 0 0 1 0 -92 46 46 0 0 1 0 92"  stroke-dashoffset="40" /> -->
+        <path
+          id="rangeArk"
+          [attr.stroke-dasharray]="arcValue + ', 100'"
+          stroke-linecap="round"
+          d="M18 2.0845
+                a 15.9155 15.9155 0 0 1 0 31.831
+                a 15.9155 15.9155 0 0 1 0 -31.831"
+          fill="none"
+          stroke="black"
+          stroke-width="2" />
+      </g>
     </svg>
     <div
       class="elipse1"
@@ -81,4 +75,4 @@
       </div>
     </div>
   </div>
-</div> 
+</div>

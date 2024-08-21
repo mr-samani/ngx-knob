@@ -9,7 +9,7 @@
   height: 280px;
   padding: 32px;
   position: relative;
-  &.disabled{
+  &.disabled {
     filter: grayscale(1);
   }
 }
@@ -39,7 +39,6 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-
 }
 
 .elipse2 {
@@ -75,6 +74,21 @@ span.num {
   z-index: 0;
   width: 100%;
   transform: rotate(-147deg);
+  border-radius: 100%;
+  div.arcGradient {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    // background: conic-gradient(from -10deg, red, blue);
+  }
+
+  g.blendMode {
+    mix-blend-mode: lighten;
+  }
+
+  g.blendMode > rect {
+    fill: #f5f8ff;
+  }
 }
 
 #rangeArk {

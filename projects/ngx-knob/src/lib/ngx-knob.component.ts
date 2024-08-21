@@ -1,4 +1,15 @@
-import { Component, ElementRef, HostListener, Input, OnInit, Renderer2, ViewChild, forwardRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  Input,
+  OnChanges,
+  OnInit,
+  Renderer2,
+  SimpleChanges,
+  ViewChild,
+  forwardRef,
+} from '@angular/core';
 import {
   NG_VALUE_ACCESSOR,
   NG_VALIDATORS,
@@ -9,6 +20,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { convertDegreeToValue, convertValueToDegree, getOffsetPosition } from '../utils/utils';
+import { IColorRange } from '../public-api';
 
 @Component({
   selector: 'ngx-knob',
@@ -27,11 +39,14 @@ import { convertDegreeToValue, convertValueToDegree, getOffsetPosition } from '.
     },
   ],
 })
-export class NgxKnobComponent implements ControlValueAccessor, OnInit, Validator {
+export class NgxKnobComponent implements ControlValueAccessor, OnChanges, Validator {
   @Input() title = 'HEATING';
   @Input() min = 0;
   @Input() max = 100;
   @Input() value = 0;
+  _colorRanges = 'conic-gradient(from -10deg, #985EE1, #F25656)';
+
+  @Input() colorRanges: IColorRange[] = [];
 
   arcValue = 0;
 
@@ -50,10 +65,17 @@ export class NgxKnobComponent implements ControlValueAccessor, OnInit, Validator
   constructor(private _renderer: Renderer2) {
     this.initRange();
   }
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['colorRanges']) {
+      const previousValue = changes['colorRanges'].previousValue;
+      const currentValue = changes['colorRanges'].currentValue;
+      if (previousValue != currentValue) {
+        this.updateStyle();
+      }
+    }
   }
+
   private get _min() {
     // min is =0
     return Math.round((this.min * 0) / 100);
@@ -129,6 +151,14 @@ export class NgxKnobComponent implements ControlValueAccessor, OnInit, Validator
     // this._validatorOnChange();
   }
 
+  updateStyle() {
+    if (this.colorRanges && Array.isArray(this.colorRanges)) {
+      const c = this.colorRanges.map((m) => m.color + ' ' + (typeof m.percent == 'number' ? m.percent + '%' : ''));
+      this._colorRanges = 'conic-gradient(from -10deg, ' + c.join(',') + ')';
+    } else {
+      console.warn('NgxKnob', 'Color rang must be array of string colors');
+    }
+  }
   /*-------------------------------------------------------------------------------------------------*/
 
   /**
@@ -155,11 +185,11 @@ export class NgxKnobComponent implements ControlValueAccessor, OnInit, Validator
    * @param ev mouse event | touch event
    */
   onMouseDown(ev: MouseEvent | TouchEvent) {
-    ev.preventDefault();
-    ev.stopPropagation();
     if (this.isDisabled) {
       return;
     }
+    ev.preventDefault();
+    ev.stopPropagation();
     this.position = getOffsetPosition(ev, this.selectAngle.nativeElement);
     this.dragging = true;
     this.updateAngle();

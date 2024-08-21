@@ -1,15 +1,52 @@
 <div class="container">
-  <ngx-knob [(ngModel)]="value" #knob="ngModel" required [disabled]="disabled" />
   <div>
-    <button (click)="clear()">clear</button>
-    <p>
-      <label>
-        <input type="checkbox" [(ngModel)]="disabled" name="disabled" />
+    <ngx-knob [(ngModel)]="value" #knob required [disabled]="disabled" [colorRanges]="colorRanges" />
+  </div>
+
+  <p>
+    <span>
+      Source:
+      <a href="https://github.com/mr-samani/ngx-knob" target="_blank">Github</a>
+    </span>
+    &nbsp;&nbsp;&nbsp;
+    <span>
+      NPM:
+      <a href="https://www.npmjs.com/package/ngx-knob" target="_blank">Npm package</a>
+    </span>
+  </p>
+
+  <div class="input-group mb-3">
+    <input type="number" [(ngModel)]="value" class="form-control" />
+    <button (click)="clear()" class="btn btn-primary input-group-text">clear</button>
+  </div>
+
+  <div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="checkbox" [(ngModel)]="disabled" name="disabled" class="form-check-input" />
         Disable
       </label>
-    </p>
+    </div>
   </div>
-  <pre>{{ value | json }}</pre>
-  <input type="number" [(ngModel)]="value" />
-  <pre>{{ knob.errors | json }}</pre>
+  <div class="color-ranges">
+    <div class="item" *ngFor="let item of colorRanges; let i = index">
+      <button (click)="deleteColor(i)" class="btn btn-sm">x</button>
+      <input type="color" [(ngModel)]="item.color" name="c" (ngModelChange)="knob.updateStyle()" />
+      <input
+        type="range"
+        min="0"
+        max="100"
+        [(ngModel)]="item.percent"
+        name="percent"
+        (ngModelChange)="knob.updateStyle()" />
+      <span>{{ item.percent }}%</span>
+    </div>
+    <button (click)="addNewColor()" class="btn btn-primary">Add color</button>
+  </div>
+
+  <div class="configs">
+    <div>Configuration:</div>
+    &#64;Input() colorRanges=
+    <div>{{ colorRanges | json }}</div>
+  </div>
 </div>
