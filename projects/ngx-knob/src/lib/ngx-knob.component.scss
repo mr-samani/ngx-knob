@@ -9,6 +9,9 @@
   height: 280px;
   padding: 32px;
   position: relative;
+  &.disabled{
+    filter: grayscale(1);
+  }
 }
 
 .ngx-knob {

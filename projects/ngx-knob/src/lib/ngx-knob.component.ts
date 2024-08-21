@@ -157,6 +157,9 @@ export class NgxKnobComponent implements ControlValueAccessor, OnInit, Validator
   onMouseDown(ev: MouseEvent | TouchEvent) {
     ev.preventDefault();
     ev.stopPropagation();
+    if (this.isDisabled) {
+      return;
+    }
     this.position = getOffsetPosition(ev, this.selectAngle.nativeElement);
     this.dragging = true;
     this.updateAngle();

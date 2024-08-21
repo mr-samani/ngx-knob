@@ -1,7 +1,13 @@
 <div class="container">
-  <ngx-knob [(ngModel)]="value" #knob="ngModel" required />
+  <ngx-knob [(ngModel)]="value" #knob="ngModel" required [disabled]="disabled" />
   <div>
     <button (click)="clear()">clear</button>
+    <p>
+      <label>
+        <input type="checkbox" [(ngModel)]="disabled" name="disabled" />
+        Disable
+      </label>
+    </p>
   </div>
   <pre>{{ value | json }}</pre>
   <input type="number" [(ngModel)]="value" />

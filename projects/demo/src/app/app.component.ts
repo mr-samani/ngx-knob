@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   value: number | null = 100;
+  disabled = false;
   createRandomaize() {
     this.value = Math.round(Math.random() * 100);
   }
