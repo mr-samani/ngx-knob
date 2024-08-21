@@ -6,7 +6,8 @@
     "start": "ng serve --open --port=3333",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "buildDemo":"ng build demo --base-href /ngx-knob/  --output-path ./docs"
   },
   "private": true,
   "dependencies": {

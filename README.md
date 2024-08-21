@@ -2,6 +2,9 @@
 
 `NgxKnob` is an Angular component that provides a knob controller allowing users to adjust values within a specified range. This component supports both mouse and touch interactions and can be easily integrated into Angular projects.
 
+# [Live Demo](https://mr-samani.github.io/ngx-knob)
+
+
 ## Features
 
 - **Adjustable Value:** Allows users to change the value between a minimum and maximum range using mouse or touch.
