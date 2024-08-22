@@ -1,6 +1,6 @@
 {
   "name": "ngx-knob",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "An Angular component for creating knob controllers to adjust values within a specified range.",
   "author": "Mohammadreza Samani <mr.samani1368@gmail.com>",
   "repository": {

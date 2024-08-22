@@ -4,7 +4,6 @@
 
 # [Live Demo](https://mr-samani.github.io/ngx-knob)
 
-
 ## Features
 
 - **Adjustable Value:** Allows users to change the value between a minimum and maximum range using mouse or touch.
@@ -33,9 +32,9 @@ import { NgxKnobModule } from 'ngx-knob';
     NgxKnobModule,
     // other modules
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
 ```
 
 ### Using in a Template
@@ -56,7 +55,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   value = 50;
@@ -67,30 +66,26 @@ export class AppComponent {
 
 ### Inputs
 
-| Input       | Type    | Default | Description                                           |
-|-------------|---------|---------|-------------------------------------------------------|
-| `title`     | `string`| `'HEATING'` | The title displayed above the knob.                    |
-| `min`       | `number`| `0`     | The minimum value that the knob can represent.         |
-| `max`       | `number`| `100`   | The maximum value that the knob can represent.         |
-| `value`     | `number`| `0`     | The current value of the knob.                         |
+| Input         | Type          | Default                                              | Description                                    |
+| ------------- | ------------- | ---------------------------------------------------- | ---------------------------------------------- |
+| `title`       | `string`      | `'HEATING'`                                          | The title displayed above the knob.            |
+| `min`         | `number`      | `0`                                                  | The minimum value that the knob can represent. |
+| `max`         | `number`      | `100`                                                | The maximum value that the knob can represent. |
+| `value`       | `number`      | `0`                                                  | The current value of the knob.                 |
+| `colorRanges` | `IColorRange` | `[ { "color": "#985EE1" }, { "color": "#F25656" } ]` | The color range3                               |
 
 ### Outputs
 
-| Output     | Type     | Description                                      |
-|------------|----------|--------------------------------------------------|
-| `change`   | `EventEmitter<number>` | Emits the new value whenever the knob's value changes. |
+| Output   | Type                   | Description                                            |
+| -------- | ---------------------- | ------------------------------------------------------ |
+| `change` | `EventEmitter<number>` | Emits the new value whenever the knob's value changes. |
 
 ## Example
 
 Here is a complete example of how to use the `ngx-knob` component:
 
 ```html
-<ngx-knob 
-  [min]="0" 
-  [max]="100" 
-  [(ngModel)]="value" 
-  title="HEATING">
-</ngx-knob>
+<ngx-knob [min]="0" [max]="100" [(ngModel)]="value" title="HEATING"></ngx-knob>
 <p>Value: {{ value }}</p>
 ```
 
@@ -100,7 +95,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   value = 50;
@@ -112,7 +107,7 @@ export class AppComponent {
 If you want to contribute to this library, you can clone the repository and make your changes:
 
 ```bash
-git clone https://github.com/username/ngx-knob.git
+git clone https://github.com/mr-samani/ngx-knob.git
 cd ngx-knob
 npm install
 ```
@@ -129,13 +124,8 @@ ng serve
 
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
-
-
-
-
 ## Author
+
 💻Mohammadreza samani | FrontEnd Developer
 
 [❤️Buy me a coffee 😉](https://www.buymeacoffee.com/mrsamani)
-
- 
