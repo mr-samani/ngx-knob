@@ -20,7 +20,7 @@
 
 "@angular-devkit/build-angular@^18.2.0":
   version "18.2.0"
-  resolved "https://registry.npmjs.org/@angular-devkit/build-angular/-/build-angular-18.2.0.tgz"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/build-angular/-/build-angular-18.2.0.tgz#e78056b73ef990f4c8eca3393b3a4aaa9ef69d2f"
   integrity sha512-V0XKT7xt6d6duXqmDAQEQgEJNXuWAekpHEDxafvBT0MTxcEhu0ozQVwI4oAekiKOz+APIcAZyMzvw3Tlzog5cw==
   dependencies:
     "@ampproject/remapping" "2.3.0"
