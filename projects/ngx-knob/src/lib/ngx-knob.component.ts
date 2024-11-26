@@ -23,21 +23,22 @@ import { convertDegreeToValue, convertValueToDegree, getOffsetPosition } from '.
 import { IColorRange } from '../public-api';
 
 @Component({
-  selector: 'ngx-knob',
-  templateUrl: './ngx-knob.component.html',
-  styleUrls: ['./ngx-knob.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => NgxKnobComponent),
-      multi: true,
-    },
-    {
-      provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => NgxKnobComponent),
-      multi: true,
-    },
-  ],
+    selector: 'ngx-knob',
+    templateUrl: './ngx-knob.component.html',
+    styleUrls: ['./ngx-knob.component.scss'],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => NgxKnobComponent),
+            multi: true,
+        },
+        {
+            provide: NG_VALIDATORS,
+            useExisting: forwardRef(() => NgxKnobComponent),
+            multi: true,
+        },
+    ],
+    standalone: false
 })
 export class NgxKnobComponent implements ControlValueAccessor, OnChanges, Validator {
   @Input() title = 'HEATING';
