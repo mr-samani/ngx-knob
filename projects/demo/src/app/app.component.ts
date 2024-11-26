@@ -6,11 +6,10 @@ import { CommonModule } from '@angular/common';
 import { IColorRange } from '../../../ngx-knob/src/public-api';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, CommonModule, NgxKnobModule, FormsModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+    selector: 'app-root',
+    imports: [RouterOutlet, CommonModule, NgxKnobModule, FormsModule],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   value: number | null = 100;
